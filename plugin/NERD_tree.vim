@@ -3581,40 +3581,31 @@ endfunction
 " CHE Wenlong add for trinity.vim
 " Begin
 function! s:GetEditWinNR()
-
-	let l:i = 1
-	let l:j = 1
-
-	let l:pluginList = [
+    let l:i = 1
+    let l:j = 1
+    let l:pluginList = [
             \ "__Tag_List__", 
-		    \ "_NERD_tree_", 
-		    \ "Source_Explorer"
-	    \]
-
-	while 1
-
+	    \ "_NERD_tree_", 
+	    \ "Source_Explorer"
+        \]
+    while 1
         for item in l:pluginList
-			if bufname(winbufnr(l:i)) ==# item
-                \ || getwinvar(l:i, '&previewwindow')
-				break
-			else
-				let l:j += 1
-			endif
-		endfor
-
-		if j >= len(l:pluginList)
+	    if bufname(winbufnr(l:i)) ==# item || getwinvar(l:i, '&previewwindow')
+		break
+	    else
+		let l:j += 1
+	    endif
+	endfor
+	if j >= len(l:pluginList)
             return l:i
-		else
-			let l:i += 1
+	else
+	    let l:i += 1
             let l:j = 0
-		endif
-
+	endif
         if l:i > winnr("$")
-			return -1
-		endif
-
+	    return -1
+	endif
 	endwhile
-
 endfunction
 " End
 
